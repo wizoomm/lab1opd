@@ -1,0 +1,166 @@
+#!/bin/bash
+until rm -rf `find lab0 2> /dev/null` 2> /dev/null ; do
+ chmod -R 777 lab0 2> /dev/null
+done
+
+# (это цикл) штука которая рекурсивно удаляет всё что идет от лаб0, даёт права доступа на лаб0
+# если бы ее не было, то он бы повторно создавал файлы по запуску повторному
+
+
+
+# задание 1
+mkdir -p lab0/boldore3
+echo "Возможности Overland=7 Surface=5 Jump=3 Power=2
+     > Intelligence=4 Inflatable=0" > lab0/boldore3/wigglytuff
+cd lab0/boldore3
+mkdir igglybuff zweilous forretress
+cd ..
+echo "Живет Forest
+> Rainforest" > exeggutor6
+mkdir lopunny8
+cd lopunny8
+mkdir nidorino
+echo "Тип диеты Omnivore" > floatzel
+mkdir hoothoot solosis
+echo "Тип диеты
+     > Herbivore" > escavalier
+echo "Возможности Overland=7 Surface=8 Underwater=7
+> Jump=3 Power=3 Intelligence=4 Fountain=0
+> Gilled=0" > quagsire
+cd ..
+echo "weigth=83.8 height=39.0 atk=9
+> def=7" > skuntank3
+echo "Живет Ocean" > tirtouga8
+mkdir ursaring2
+cd ursaring2
+mkdir pidove bidoof graveler
+echo "Живет Freshwater Marsh" > swanna
+cd ..
+
+#проверка задания 1
+ls -R
+
+# задание 2
+
+chmod 335 boldore3
+cd boldore3
+chmod ugo=r wigglytuff
+chmod 752 igglybuff
+chmod 333 zweilous
+chmod 551 forretress
+cd ..
+chmod 620 exeggutor6
+chmod 355 lopunny8
+cd lopunny8
+chmod u=wx nidorino
+chmod g=rw nidorino
+chmod o=x nidorino
+chmod 440 floatzel
+chmod ug=wx hoothoot
+chmod o=rx hoothoot
+chmod 312 solosis
+chmod 044 escavalier
+chmod u=rw quagsire
+chmod g=r quagsire
+chmod o-r quagsire
+cd ..
+chmod 400 skuntank3
+chmod 600 tirtouga8
+chmod u=wx ursaring2
+chmod g=rw ursaring2
+chmod o=x ursaring2
+cd ursaring2
+chmod u=wx pidove
+chmod go=x pidove
+chmod u=rx bidoof
+chmod go=rwx bidoof
+chmod 640 swanna
+chmod 524 graveler
+cd ..
+
+# проверка 2 задания
+
+ls -l
+#fix (исправление boldore3  не читается)
+chmod u+r boldore3
+cd boldore3
+ls -l
+cd ..
+chmod u-r boldore3
+#fix (исправление lopunny8  не читается)
+chmod u+r lopunny8
+cd lopunny8
+ls -l
+cd ..
+chmod u-r lopunny8
+#fix (исправление ursaring2 не читается)
+chmod u+r ursaring2
+cd ursaring2
+ls -l
+cd ..
+chmod u-r ursaring2
+
+
+
+# задание 3
+
+ln -s ursaring2 Copy_63      # пункт 1
+
+chmod u+r ursaring2          # пункт 2
+cd ursaring2
+chmod u+r pidove
+cd ..
+cp -R ursaring2 boldore3/igglybuff
+cd ursaring2
+chmod u-r pidove
+cd ..
+chmod u-r ursaring2
+
+cp tirtouga8 lopunny8/hoothoot                    # пункт 3
+
+ln tirtouga8 boldore3/wigglytufftirtouga          # пункт 4
+
+cat skuntank3 > lopunny8/escavalierskuntank       # пункт 5
+
+ln -s $PWD/skuntank3 $PWD/lopunny8/quagsireskuntank   # пункт 6
+
+chmod u+r ursaring2                               # пункт 7
+cat ursaring2/swanna ursaring2/swanna > exeggutor6_77
+chmod u-r ursaring2
+
+
+
+# задание 4
+
+
+chmod u+r ursaring2                         # пункт 1
+wc -l ursaring2/* 2>/dev/null | sort -nr
+chmod u-r ursaring2
+
+# присвоила всем файлам внутри директории права на чтение
+chmod -R u+r boldore3                         # пункт2
+chmod -R u+r lopunny8
+chmod -R u+r ursaring2
+ls -lR | sort -nr -k 5 | grep 'f$' 2>/tmp/pumpum
+
+
+cat lopunny8/* | grep 'Su'                    # пункт 3
+
+ls lopunny8 | sort -r                         # пункт 4
+
+(wc -l boldore3/* 1>/tmp/pumpum) 2>&1 | grep buff     # пункт 5
+cat /tmp/pumpum
+
+cd boldore3                                   # пункт 6
+ls -lR | sort -k 7  2>/dev/null
+cd ..
+
+
+
+# задание 5
+rm tirtouga8
+rm -f boldore3/wigglytuff
+rm Copy_*
+rm boldore3/wigglytufftirtou*
+rm -rf boldore3
+rm -rf boldore3/zweilous
